@@ -1,0 +1,36 @@
+ToDO
+
+Tasks may be done out of order.
+
+1. Clean up and comment
+2. Sets can be any size, right now its hard coded to 100.
+3. Add support for a config file so PWPF can remember settings.
+4. Add a progress bar while a new set is being chosen.
+5. Fix crashing when a new non graphics file format is found.
+
+6. Add support for mousewheel zooming in and out.
+
+7. Some pictures do not display right in WPV/PWPF, find out why and see if that can be put in PWPF.
+
+8. Find a way to set the focus to the forward button.
+
+9. Find out how to use random better. Now it allows any picture to show up which is fine but sometimes it would be good to turn it off. Right now if the number of pictures is less than the set size, random is not used.
+
+10. If item 3 is working, we should be able to remember the last viewed directory.
+
+11. Fix the dupe problem.
+
+Dupes are complicated because there are a bunch of different situations.
+A. Two files have the same name and content.
+B. Two files have the same name but different content.
+C. Two files have the same content but one is bigger and or has a border. The area of interest is the same.
+
+I was using a dictionary to knock out the pictures in situation A but that also means that I would lose pictures in situation B. 
+
+Will have to be a bit more smarter with the Dupe problem.
+If 2 pictures have different filesizes then they are not the same.
+Kinda.
+
+12. Add gif animation.
+13. Add better directory recursion.
+ 
