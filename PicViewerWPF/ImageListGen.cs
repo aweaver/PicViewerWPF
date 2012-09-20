@@ -1,9 +1,22 @@
-﻿using System;
+﻿#region File Description
+//-----------------------------------------------------------------------------
+// ImageListGen.cs
+//
+// Generates a list of pictures 
+// 
+// 
+// 
+//-----------------------------------------------------------------------------
+#endregion
+
+#region Using Statements
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
 using System.Diagnostics;
+#endregion
 
 namespace PicViewerWPF
 {
@@ -14,12 +27,21 @@ namespace PicViewerWPF
         private Random rand;
         private Dictionary<string, int> dupesTestDict;
 
+        /// <summary>
+        /// ImageListGen
+        /// </summary>
         public ImageListGen()
         {
             rand = new Random();
             dupesTestDict = new Dictionary<string, int>();
         }
 
+        /// <summary>
+        /// generateImageList- generates a list of pictures
+        /// </summary>
+        /// <param name="srcDir">Directory to get the pictures from</param>
+        /// <param name="maxImageLstLen">the set size</param>
+        /// <returns></returns>
         public List<string> generateImageList(string srcDir, int maxImageLstLen)
        {
            DirectoryInfo[] subdirs;
@@ -37,7 +59,14 @@ namespace PicViewerWPF
 
            return (makeFileList(dir, subdirs, maxImageLstLen));
        }
-
+        
+        /// <summary>
+        /// makeFileList- actually makes the list
+        /// </summary>
+        /// <param name="srcdir"></param>
+        /// <param name="subdirs"></param>
+        /// <param name="iMax"></param>
+        /// <returns></returns>
        private List<string> makeFileList( DirectoryInfo srcdir,DirectoryInfo[] subdirs,int iMax)
        {
            FileInfo[] filesInfo;
@@ -80,7 +109,13 @@ namespace PicViewerWPF
            outfilelist = pickFiles(filelist, iMax);
            return (outfilelist);
    }
-
+        
+        /// <summary>
+       /// checkFiles- have to check the file types because the windows image viewer control will crash if its a
+       /// non image file.
+        /// </summary>
+        /// <param name="testFilename"></param>
+        /// <returns></returns>
        private bool checkFiles(string testFilename)
        {
            string stemp;
@@ -100,6 +135,7 @@ namespace PicViewerWPF
                //Dupe finding is a fail
                // 2 files can have the same name and not be dupes
                // 2 files can have the same name and be dupes
+               // 2 files can have the same content but one could be bigger or have a border.
               // if (dupesTestDict.Count == 0 || dupesTestDict.ContainsKey(stemp) == false)//not in list, save it
               // {
                 //   dupesTestDict.Add(stemp, 1);
@@ -112,6 +148,12 @@ namespace PicViewerWPF
            }
        }
 
+        /// <summary>
+       /// pickFiles- goes through the list and picks out a set.
+        /// </summary>
+        /// <param name="filelist"></param>
+        /// <param name="iMax"></param>
+        /// <returns></returns>
        private List<string> pickFiles(List<string> filelist, int iMax)
        {
            List<string> outfilelist;
@@ -121,6 +163,8 @@ namespace PicViewerWPF
            outfilelist = new List<string>();
            bool bRand;
 
+           //if there are not enough to go in a set, just read them all
+           // good for comics
            if (filelist.Count < iMax)
            {
                actualMax = filelist.Count;//less files than the max requested go with lower number
@@ -130,7 +174,7 @@ namespace PicViewerWPF
                }
            }
            else
-           {
+           {// plenty of content, get a set's worth
                actualMax = iMax;
                for (a = 0; a < actualMax; a++)
                {
