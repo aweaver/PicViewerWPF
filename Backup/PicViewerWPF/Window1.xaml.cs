@@ -242,11 +242,9 @@ namespace PicViewerWPF
              //Debug.WriteLine(" dScale " +dScale);
              //Debug.WriteLine(" ImageDisp.LayoutTransform " + ImageDisp.LayoutTransform);
              ImageDisp.RenderTransform = new ScaleTransform(dScale, dScale,(double)(pixelwidth / 2.0f), (double)(pixelheight / 2.0f));
-         // ImageDisp.RenderTransformOrigin
-          //   Debug.WriteLine("Transform");
+           ImageDisp.
+             Debug.WriteLine("Transform");
              Debug.WriteLine("W " + bmpImage.PixelWidth + " H " + bmpImage.PixelHeight);
-             Debug.WriteLine("ImageDisp Actual W " + ImageDisp.ActualWidth + " H " + ImageDisp.ActualHeight);
-             Debug.WriteLine("W " + ImageDisp.Width + " H " + ImageDisp.Height);
              Debug.WriteLine("Dpi X " + bmpImage.DpiX + " Dpi Y " + bmpImage.DpiY);
              Debug.WriteLine("Source X " + bmpImage.SourceRect.X + " Source Y " + bmpImage.SourceRect.Y);
 

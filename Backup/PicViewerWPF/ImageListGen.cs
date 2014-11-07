@@ -16,7 +16,6 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Diagnostics;
-using System.Windows.Forms;
 #endregion
 
 namespace PicViewerWPF
@@ -84,25 +83,9 @@ namespace PicViewerWPF
           {
               //Debug.WriteLine("file Full Name: " + fileinfo.FullName);
               //Debug.WriteLine("file Name: " + fileinfo.Name);
-            
-             //need to find the exact format for the  
-              try
-              {
-                  if (checkFiles(fileinfo.FullName) == true)
-                      filelist.Add(fileinfo.FullName);
-              }
-              catch (System.IO.PathTooLongException e)
-              {
-                  #if DEBUG
-                    Debug.WriteLine("file Name: " + fileinfo.Name);
-                    Debug.WriteLine("in picviewer " + e.Message);
-                   #endif
 
-                  MessageBox.Show("Too long: " + fileinfo.Name,
-                                                    "Picture Viewer",
-                                                    MessageBoxButtons.OKCancel, 
-                                                    MessageBoxIcon.Error);
-             }
+              if (checkFiles(fileinfo.FullName) == true)
+                  filelist.Add(fileinfo.FullName);
           }
 
            foreach (DirectoryInfo subdir in subdirs)
@@ -117,7 +100,6 @@ namespace PicViewerWPF
                    if (checkFiles(fileinfo.FullName)==true)
                         filelist.Add(fileinfo.FullName);
                }
-               //
 
                dupesTestDict.Clear();//reset dupes dir
 
